@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="beijinglan">#56abe4</color>
+    <color name="listbg">#f8f8f8</color>
+    <color name="leftbg">#e8f0f8</color>
+    <color name="light_blue">#4A92FC</color>
+    <color name="tianqilan">#D9EFFD</color>
+    <color name="tianqishenlan">#439FE9</color>
+    <color name="huise">#F2F2F2</color>
+    <color name="fense">#5f5f</color>
+</resources>
