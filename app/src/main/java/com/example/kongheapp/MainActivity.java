@@ -153,8 +153,6 @@ public class MainActivity extends FragmentActivity {
                         tv_title.setText("添加快捷方式");
                         break;
                     case 3:
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-//                        tv_title.setText("主题管理");
                         boolean isDark = readMode();
                         saveMode(!isDark);
                         finish();
