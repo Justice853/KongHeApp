@@ -1,6 +1,7 @@
 package com.example.kongheapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -149,8 +150,11 @@ public class MainActivity extends FragmentActivity {
                         startActivity(intent1);
                         break;
                     case 5:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                        tv_title.setText("关于");
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
+//                        tv_title.setText("关于");
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://www.cxp853.top/"));
+                        startActivity(intent);
                         break;
                     case 6:
                         tuichu();
