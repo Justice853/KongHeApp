@@ -1,6 +1,8 @@
 package com.example.kongheapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.Settings;
@@ -65,6 +67,14 @@ public class MainActivity extends FragmentActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final boolean isDark = readMode();
+        if(isDark){
+            //设置主题
+            setTheme(R.style.AppDarkTheme);
+        }else{
+            setTheme(R.style.AppLightTheme);
+        }
+
         setContentView(R.layout.fragment_menu);
         ActivityCollector.addActivity(this);
         ihome= findViewById(R.id.homeimage);
@@ -98,7 +108,7 @@ public class MainActivity extends FragmentActivity {
                 "我的账户",
                 "全部应用",
                 "添加快捷方式",
-                "主题管理",
+                "主题切换",
                 "设置",
                 "关于",
                 "退出",
@@ -143,8 +153,15 @@ public class MainActivity extends FragmentActivity {
                         tv_title.setText("添加快捷方式");
                         break;
                     case 3:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                        tv_title.setText("主题管理");
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
+//                        tv_title.setText("主题管理");
+                        boolean isDark = readMode();
+                        saveMode(!isDark);
+                        finish();
+                        Intent intent2 = getIntent();
+                        intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent2);
+                        overridePendingTransition(0, 0);
                         break;
                     case 4:
                         Intent intent1 = new Intent(Settings.ACTION_DISPLAY_SETTINGS);
@@ -164,6 +181,18 @@ public class MainActivity extends FragmentActivity {
             }
         });
         setHome();
+    }
+    public static int  getThemeId(Context c) {
+        //创建SharedPreferences对象
+        SharedPreferences sharedPreferences = c.getSharedPreferences("themeId",Context.MODE_PRIVATE);
+        //根据key获取对应的数据
+
+        int i =  Integer.parseInt(sharedPreferences.getString("theme","0"));
+        if (i==0){
+            i= R.style.AppLightTheme;
+        }
+
+        return i;
     }
     public void setHome(){
         getSupportFragmentManager().beginTransaction().replace(R.id.pcontent,new Fragment_home()).commit();
@@ -202,5 +231,14 @@ public class MainActivity extends FragmentActivity {
             flag = false;
             finish();
         }
+    }
+    private void saveMode(boolean isDark) {
+        SharedPreferences sp = getSharedPreferences("setting", 0);
+        sp.edit().putBoolean("dark_mode", isDark).commit();
+    }
+    private boolean readMode() {
+        SharedPreferences sp = getSharedPreferences("setting", 0);
+        boolean isDark = sp.getBoolean("dark_mode", false);
+        return isDark;
     }
 }
