@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kongheapp.Controller.ActivityCollector;
+import com.example.kongheapp.activity.SetActivity;
 import com.example.kongheapp.fragment.Fragment_home;
 
 import java.lang.reflect.Array;
@@ -162,7 +163,9 @@ public class MainActivity extends FragmentActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case 4:
-                        Intent intent1 = new Intent(Settings.ACTION_DISPLAY_SETTINGS);
+//                        Intent intent1 = new Intent(Settings.ACTION_DISPLAY_SETTINGS);
+//                        startActivity(intent1);
+                        Intent intent1 = new Intent(MainActivity.this, SetActivity.class);
                         startActivity(intent1);
                         break;
                     case 5:
