@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EDEDED</color>
-    <color name="colorAccent">#FAFAFA</color>
-    <color name="textColorPrimary">#000000</color>
-    <color name="textColorSecondary">#E0E0E0</color>
-    <color name="windowBackground">#FFFFFF</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccentDark">#303030</color>
-    <color name="textColorPrimaryDark">#F0FFFF</color>
-    <color name="textColorSecondaryDark">#F4F4F4</color>
-    <color name="WindowBackgroundDark">#303030</color>
+    <color name="colorPrimary">#00bd91</color>
+    <color name="colorAccent">#459d87</color>
+    <color name="textColorPrimary">#3d3d3d</color>
+    <color name="textColorSecondary">#949494</color>
+    <color name="windowBackground">#fefefe</color>
+    <color name="colorPrimaryDark">#323c48</color>
+    <color name="colorAccentDark">#242833</color>
+    <color name="textColorPrimaryDark">#faffff</color>
+    <color name="textColorSecondaryDark">#8b8f98</color>
+    <color name="WindowBackgroundDark">#242833</color>
     <color name="beijinglan">#56abe4</color>
     <color name="listbg">#f8f8f8</color>
     <color name="leftbg">#e8f0f8</color>
