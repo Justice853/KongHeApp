@@ -182,18 +182,6 @@ public class MainActivity extends FragmentActivity {
         });
         setHome();
     }
-    public static int  getThemeId(Context c) {
-        //创建SharedPreferences对象
-        SharedPreferences sharedPreferences = c.getSharedPreferences("themeId",Context.MODE_PRIVATE);
-        //根据key获取对应的数据
-
-        int i =  Integer.parseInt(sharedPreferences.getString("theme","0"));
-        if (i==0){
-            i= R.style.AppLightTheme;
-        }
-
-        return i;
-    }
     public void setHome(){
         getSupportFragmentManager().beginTransaction().replace(R.id.pcontent,new Fragment_home()).commit();
         tv_title.setText("空盒");
@@ -232,6 +220,7 @@ public class MainActivity extends FragmentActivity {
             finish();
         }
     }
+
     private void saveMode(boolean isDark) {
         SharedPreferences sp = getSharedPreferences("setting", 0);
         sp.edit().putBoolean("dark_mode", isDark).commit();
