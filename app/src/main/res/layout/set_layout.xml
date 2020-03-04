@@ -5,4 +5,12 @@
 
     <include layout="@layout/fragment_top2"></include>
 
+    <ListView
+        android:id="@+id/setmenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:divider="#CCCCCC"
+        />
+
+
 </LinearLayout>
