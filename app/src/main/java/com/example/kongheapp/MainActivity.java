@@ -167,7 +167,7 @@ public class MainActivity extends FragmentActivity {
     }
     public void setHome(){
         getSupportFragmentManager().beginTransaction().replace(R.id.pcontent,new Fragment_home()).commit();
-        tv_title.setText("空盒App");
+        tv_title.setText("空盒");
     }
     public boolean onKeyDown(int KeyCode, KeyEvent event) {
 
