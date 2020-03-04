@@ -13,6 +13,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:windowBackground">@color/windowBackground</item>
+
     </style>
 
     <style name="AppDarkTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
@@ -21,6 +22,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimaryDark</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:windowBackground">@color/WindowBackgroundDark</item>
+
     </style>
 
 

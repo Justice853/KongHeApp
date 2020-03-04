@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,7 @@ public class MainActivity extends FragmentActivity {
     SimpleAdapter simpleAdapter,guansimpleAdapte;
     private ListView listView,guanlistview;
     private static boolean flag=false;
+    int zt=0;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,11 +73,14 @@ public class MainActivity extends FragmentActivity {
         final boolean isDark = readMode();
         if(isDark){
             //设置主题
+            zt=1;
             setTheme(R.style.AppDarkTheme);
-        }else{
-            setTheme(R.style.AppLightTheme);
-        }
 
+        }else{
+            zt=0;
+            setTheme(R.style.AppLightTheme);
+
+    }
         setContentView(R.layout.fragment_menu);
         ActivityCollector.addActivity(this);
         ihome= findViewById(R.id.homeimage);
@@ -159,6 +164,7 @@ public class MainActivity extends FragmentActivity {
                         finish();
                         Intent intent2 = getIntent();
                         intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                         startActivity(intent2);
                         overridePendingTransition(0, 0);
                         break;
@@ -166,6 +172,7 @@ public class MainActivity extends FragmentActivity {
 //                        Intent intent1 = new Intent(Settings.ACTION_DISPLAY_SETTINGS);
 //                        startActivity(intent1);
                         Intent intent1 = new Intent(MainActivity.this, SetActivity.class);
+                        intent1.putExtra("zt",zt);
                         startActivity(intent1);
                         break;
                     case 5:

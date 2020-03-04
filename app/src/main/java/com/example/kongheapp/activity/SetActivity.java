@@ -2,10 +2,12 @@ package com.example.kongheapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +34,14 @@ public class SetActivity extends Activity {
     private static boolean flag=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        int zt =intent.getIntExtra("zt",0);
+        if(zt==1){
+            //设置主题
+            setTheme(R.style.AppDarkTheme);
+        }else{
+            setTheme(R.style.AppLightTheme);
+        }
         setContentView(R.layout.set_layout);
         title=findViewById(R.id.rt_title);
         fanhui=findViewById(R.id.returnimage);
@@ -68,6 +78,7 @@ public class SetActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse("http://www.cxp853.top/"));
                         startActivity(intent);
