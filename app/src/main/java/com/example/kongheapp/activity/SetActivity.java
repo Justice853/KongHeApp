@@ -6,12 +6,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kongheapp.Controller.ActivityCollector;
 import com.example.kongheapp.MainActivity;
@@ -27,12 +29,15 @@ public class SetActivity extends Activity {
     private ListView listView;
     ArrayList<HashMap<String,Object>> setitems;
     SimpleAdapter simpleAdapter;
+    private static boolean flag=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_layout);
         title=findViewById(R.id.rt_title);
         fanhui=findViewById(R.id.returnimage);
         listView = findViewById(R.id.setmenu);
+        //添加下划线
+        listView.addFooterView(new TextView(getBaseContext()));
 
         title.setText("设置");
         fanhui.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +58,8 @@ public class SetActivity extends Activity {
             map.put("action_name", actionTexts[i]);
             setitems.add(map);
         }
-        simpleAdapter = new SimpleAdapter(getApplicationContext(), setitems, R.layout.fragment_zuoceitem,
-                new String[]{ "action_name"},
+        simpleAdapter = new SimpleAdapter(getApplicationContext(), setitems, R.layout.set_item,
+                new String[]{"action_name"},
                 new int[]{R.id.set_wenzi});
         listView.setAdapter(simpleAdapter);
         listView.setVisibility(View.VISIBLE);
@@ -81,4 +86,6 @@ public class SetActivity extends Activity {
         });
 
     }
+
+
 }

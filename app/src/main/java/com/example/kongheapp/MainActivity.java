@@ -187,22 +187,7 @@ public class MainActivity extends FragmentActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.pcontent,new Fragment_home()).commit();
         tv_title.setText("空盒");
     }
-    public boolean onKeyDown(int KeyCode, KeyEvent event) {
 
-        if (KeyCode == KeyEvent.KEYCODE_BACK) {
-            if (event.isLongPress()) {
-                Toast.makeText(this, "changan", Toast.LENGTH_LONG).show();
-                finish();
-                return super.onKeyDown(KeyCode, event);
-            } else {
-                tuichu();
-                return true;
-            }
-
-        } else {
-            return super.onKeyDown(KeyCode, event);
-        }
-    }
     public void tuichu() {
         if (!flag) {
             flag = true;
