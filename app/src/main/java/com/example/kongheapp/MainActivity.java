@@ -21,6 +21,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kongheapp.Controller.ActivityCollector;
 import com.example.kongheapp.fragment.Fragment_home;
 
 import java.lang.reflect.Array;
@@ -65,7 +66,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_menu);
-
+        ActivityCollector.addActivity(this);
         ihome= findViewById(R.id.homeimage);
         tv_title=findViewById(R.id.tv_title);
         iSliding=findViewById(R.id.menuimage);
@@ -157,7 +158,7 @@ public class MainActivity extends FragmentActivity {
                         startActivity(intent);
                         break;
                     case 6:
-                        tuichu();
+                        ActivityCollector.finishAll();
                         break;
                 }
             }
