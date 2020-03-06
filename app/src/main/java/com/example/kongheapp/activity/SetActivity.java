@@ -1,6 +1,10 @@
 package com.example.kongheapp.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -25,6 +29,9 @@ import com.example.kongheapp.fragment.Fragment_home;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static android.os.Looper.loop;
+import static android.os.Looper.prepare;
+
 public class SetActivity extends Activity {
     TextView title;
     ImageView fanhui;
@@ -32,6 +39,7 @@ public class SetActivity extends Activity {
     ArrayList<HashMap<String,Object>> setitems;
     SimpleAdapter simpleAdapter;
     private static boolean flag=false;
+    int panduan1=1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
@@ -84,19 +92,86 @@ public class SetActivity extends Activity {
                         startActivity(intent);
                         break;
                     case 1:
+                        GengxinDialog();
                         break;
                     case 2:
+                        QingchuDialog();
                         break;
                     case 3:
+                        Intent intent1 = new Intent(Intent.ACTION_VIEW);
+                        intent1.setData(Uri.parse("http://www.cxp853.top/"));
+                        startActivity(intent1);
                         break;
-                    case 4:
-                        break;
+
 
                 }
             }
         });
 
     }
+
+    private void QingchuDialog(){
+        final ProgressDialog dialog = new ProgressDialog(SetActivity.this);
+        dialog.setTitle("清除APP缓存中");
+        dialog.setMessage("等待");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.show();
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                dialog.dismiss();
+            }
+        });
+        t.start();
+
+    }
+    private void GengxinDialog(){
+        final ProgressDialog dialog = new ProgressDialog(SetActivity.this);
+        dialog.setTitle("检查是否存在更新");
+        dialog.setMessage("正在检查");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.show();
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Thread.sleep(2000);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+               dialog.dismiss();
+                prepare();
+                tishiDialog();
+                loop();
+            }
+        });
+        t.start();
+
+    }
+    private void tishiDialog(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(SetActivity.this);
+        builder.setTitle("暂时没有新的版本");
+        builder.setMessage("请耐心等待新的功能");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                builder.create().dismiss();
+            }
+        });
+        builder.create().show();
+    }
+
 
 
 }
