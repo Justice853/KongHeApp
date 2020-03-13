@@ -14,6 +14,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.kongheapp.R;
+import com.example.kongheapp.huodong.CompassActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,6 +66,10 @@ public class QuanBuActivity extends Activity {
                     case 0:
                         break;
                     case 1:
+                        Intent intent = new Intent(QuanBuActivity.this, CompassActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 2:
                         break;
                     case 3:
                         break;
