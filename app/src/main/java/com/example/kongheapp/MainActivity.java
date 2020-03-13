@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kongheapp.Controller.ActivityCollector;
+import com.example.kongheapp.activity.QuanBuActivity;
 import com.example.kongheapp.activity.SetActivity;
 import com.example.kongheapp.fragment.Fragment_home;
 
@@ -113,7 +114,6 @@ public class MainActivity extends FragmentActivity {
         String[] actionTexts = new String[]{
                 "我的账户",
                 "全部应用",
-                "添加快捷方式",
                 "主题切换",
                 "设置",
                 "关于",
@@ -122,7 +122,6 @@ public class MainActivity extends FragmentActivity {
         int[] actionImg = new int[]{
                 R.drawable.btn_l_star,
                 R.drawable.btn_l_download,
-                R.drawable.btn_l_book,
                 R.drawable.btn_l_download,
                 R.drawable.btn_l_download,
                 R.drawable.btn_l_book,
@@ -150,15 +149,12 @@ public class MainActivity extends FragmentActivity {
                         tv_title.setText("我的账户");
                         break;
                     case 1:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                        tv_title.setText("全部应用");
+                        Intent intent3 = new Intent(MainActivity.this, QuanBuActivity.class);
+                        intent3.putExtra("zt",zt);
+                        startActivity(intent3);
                         break;
 
                     case 2:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                        tv_title.setText("添加快捷方式");
-                        break;
-                    case 3:
                         boolean isDark = readMode();
                         saveMode(!isDark);
                         finish();
@@ -168,21 +164,21 @@ public class MainActivity extends FragmentActivity {
                         startActivity(intent2);
                         overridePendingTransition(0, 0);
                         break;
-                    case 4:
+                    case 3:
 //                        Intent intent1 = new Intent(Settings.ACTION_DISPLAY_SETTINGS);
 //                        startActivity(intent1);
                         Intent intent1 = new Intent(MainActivity.this, SetActivity.class);
                         intent1.putExtra("zt",zt);
                         startActivity(intent1);
                         break;
-                    case 5:
+                    case 4:
 //                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
 //                        tv_title.setText("关于");
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse("http://www.cxp853.top/"));
                         startActivity(intent);
                         break;
-                    case 6:
+                    case 5:
                         ActivityCollector.finishAll();
                         break;
                 }

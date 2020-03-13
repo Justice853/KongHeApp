@@ -53,6 +53,7 @@ public class SetActivity extends Activity {
         setContentView(R.layout.set_layout);
         title=findViewById(R.id.rt_title);
         fanhui=findViewById(R.id.returnimage);
+
         listView = findViewById(R.id.setmenu);
         //添加下划线
         listView.addFooterView(new TextView(getBaseContext()));

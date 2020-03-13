@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.SetActivity"></activity>
+        <activity android:name=".activity.QuanBuActivity"></activity>
     </application>
 
 </manifest>
