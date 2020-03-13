@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activity.SetActivity"></activity>
         <activity android:name=".activity.QuanBuActivity"></activity>
+        <activity android:name=".huodong.CompassActivity"></activity>
     </application>
 
 </manifest>
