@@ -7,7 +7,7 @@
     android:background="?attr/colorAccent"
     android:gravity="center_vertical"
     android:orientation="vertical"
-
+    tools:context=".activity.GsdActivity"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
 
         android:background="@drawable/gsd_edit_selector"
         android:hint="11位手机号"
-        android:textColorHint="?android:attr/textColorPrimary"
+        android:textColorHint="?android:attr/textColorSecondary"
         android:inputType="phone"
         android:maxLength="11"
         android:maxLines="1" />
@@ -50,73 +50,111 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
+        android:background="?android:attr/windowBackground"
         android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:background="?android:attr/windowBackground">
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="?android:attr/windowBackground">
+
+            <TextView
+                android:id="@+id/tv_phonename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:text="手机号："
+                android:textColor="?android:attr/textColorPrimary" />
+
             <TextView
                 android:id="@+id/tv_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"
-                android:textColor="?android:attr/textColorPrimary"
-                android:text="手机号：" />
-        </RelativeLayout>
+                android:layout_marginLeft="25dp"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="?android:attr/windowBackground">
+
+            <TextView
+                android:id="@+id/tv_provincename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="省份："
+                android:textColor="?android:attr/textColorPrimary" />
+
             <TextView
                 android:id="@+id/tv_province"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:textColor="?android:attr/textColorPrimary"
-                android:text="省份："
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="?android:attr/windowBackground">
+
+            <TextView
+                android:id="@+id/tv_catNamename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="运营商："
+                android:textColor="?android:attr/textColorPrimary" />
+
             <TextView
                 android:id="@+id/tv_catName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="?android:attr/textColorPrimary"
-                android:layout_marginLeft="40dp"
-                android:text="运营商：" />
-        </RelativeLayout>
+                android:layout_marginLeft="25dp"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:background="?android:attr/windowBackground">
+
+            <TextView
+                android:id="@+id/tv_carriername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="运营者："
+                android:textColor="?android:attr/textColorPrimary" />
+
             <TextView
                 android:id="@+id/tv_carrier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="?android:attr/textColorPrimary"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"
-                android:text="运营者：" />
-        </RelativeLayout>
+                android:layout_marginLeft="25dp"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

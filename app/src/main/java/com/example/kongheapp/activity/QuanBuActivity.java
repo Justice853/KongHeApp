@@ -29,7 +29,7 @@ public class QuanBuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        int zt =intent.getIntExtra("zt",0);
+        final int zt =intent.getIntExtra("zt",0);
         if(zt==1){
             //设置主题
             setTheme(R.style.AppDarkTheme);
@@ -76,6 +76,9 @@ public class QuanBuActivity extends Activity {
                     case 4:
                         break;
                     case 5:
+                        Intent intent1 = new Intent(QuanBuActivity.this, GsdActivity.class);
+                        intent1.putExtra("zt",zt);
+                        startActivity(intent1);
                         break;
                 }
             }
