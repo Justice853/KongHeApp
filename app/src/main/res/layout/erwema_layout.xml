@@ -30,7 +30,7 @@
 
             android:hint="请输入二维码内容,如网址.."
             android:inputType="text"
-            android:maxLength="11"
+            android:maxLength="30"
             android:maxLines="1"
             android:padding="10dp"
             android:textColorHint="?android:attr/textColorSecondary" />
@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_marginTop="20dp">
 
         <Button
@@ -48,8 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:background="?attr/colorPrimary"
             android:text="生成二维码"
             android:textColor="#ffffff"
@@ -60,18 +60,22 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:background="?attr/colorPrimary"
             android:text="选择图片"
             android:textColor="#ffffff"
             android:textSize="18sp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/code_image"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="100dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/code_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </LinearLayout>
