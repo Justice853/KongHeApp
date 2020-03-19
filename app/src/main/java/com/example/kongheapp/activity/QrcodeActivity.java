@@ -56,15 +56,10 @@ public class QrcodeActivity extends Activity  {
     Button bt_ewm;
     Button bt_img;
     ImageView code_image;
-    private TextView cancel;
-    private TextView takePhoto;
-    private TextView choosePhoto;
-    private Dialog dialog;
     private Uri imageUri;
     public static final int TAKE_PHOTO =1;
     public static final int CHOOSE_PHOTO=2;
     Bitmap bitmap;
-    String path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -242,6 +237,7 @@ public class QrcodeActivity extends Activity  {
                         handleImageBeforeKitKat(data);
                     }
                 }
+                break;
             default:
                 break;
         }

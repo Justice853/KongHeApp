@@ -77,6 +77,9 @@ public class QuanBuActivity extends Activity {
                         startActivity(intent2);
                         break;
                     case 4:
+                        Intent intent3 = new Intent(QuanBuActivity.this,ImageYsActivity.class);
+                        intent3.putExtra("zt",zt);
+                        startActivity(intent3);
                         break;
                     case 5:
                         Intent intent1 = new Intent(QuanBuActivity.this, GsdActivity.class);
