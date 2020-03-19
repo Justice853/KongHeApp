@@ -1,4 +1,4 @@
-<?xml version ="1.0" encoding ="utf-8"?><!--  Learn More about how to use App Actions: https://developer.android.com/guide/actions/index.html -->
+<?xml version ="1.0" encoding ="utf-8"?>
 <litepal>
     <dbname value="Konghe_weather"></dbname>
     <version value = "1"></version>
@@ -7,5 +7,4 @@
         <mapping class = "com.example.kongheapp.db.County"></mapping>
         <mapping class = "com.example.kongheapp.db.Province"></mapping>
     </list>
-
 </litepal>

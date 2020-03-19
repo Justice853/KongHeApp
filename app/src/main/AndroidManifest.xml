@@ -30,7 +30,7 @@
         android:theme="@style/AppLightTheme">
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@xml/litepal" />
+            android:resource="@xml/actions" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -53,7 +53,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path"></meta-data>
+                android:resource="@xml/file_path" />
         </provider>
     </application>
 
