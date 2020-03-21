@@ -28,9 +28,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppLightTheme">
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/actions" />
+
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -45,6 +43,9 @@
         <activity android:name=".activity.GsdActivity" />
         <activity android:name=".activity.QrcodeActivity" />
         <activity android:name=".activity.ImageYsActivity" />
+        <activity android:name=".activity.WeatherActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
+        <activity android:name=".activity.TianQiActivity"></activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

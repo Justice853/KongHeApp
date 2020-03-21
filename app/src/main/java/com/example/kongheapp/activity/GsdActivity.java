@@ -97,7 +97,7 @@ public class GsdActivity extends Activity implements View.OnClickListener {
                     hideKeyboard(et_phone);
                     url = Consts.BAIDU_PHONE_URL + phoneNumber;
                     new GsdThread(url,phoneNumber).start();
-                }
+        }
                 break;
             default:
                 break;

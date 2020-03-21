@@ -2,8 +2,12 @@ package com.example.kongheapp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -28,7 +32,7 @@ public class QuanBuActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         final int zt =intent.getIntExtra("zt",0);
         if(zt==1){
             //设置主题
@@ -64,6 +68,9 @@ public class QuanBuActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
+                        Intent intent5 = new Intent(QuanBuActivity.this,TianQiActivity.class);
+                        intent5.putExtra("zt",zt);
+                        startActivity(intent5);
                         break;
                     case 1:
                         Intent intent = new Intent(QuanBuActivity.this, CompassActivity.class);
