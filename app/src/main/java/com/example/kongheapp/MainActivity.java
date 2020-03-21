@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SlidingPaneLayout;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kongheapp.Controller.ActivityCollector;
+import com.example.kongheapp.Util.CheckPremissionUtil;
 import com.example.kongheapp.activity.QuanBuActivity;
 import com.example.kongheapp.activity.SetActivity;
 import com.example.kongheapp.fragment.Fragment_home;
@@ -83,6 +86,18 @@ public class MainActivity extends FragmentActivity {
 
     }
         setContentView(R.layout.fragment_menu);
+        if(Build.VERSION.SDK_INT>=21){
+//检查权限
+            String[] permissions = CheckPremissionUtil.checkPermission(this);
+            if (permissions.length == 0) {
+                //权限都申请了
+
+            } else {
+                //申请权限 ,参数2:权限数组,参数3:请求码code
+                ActivityCompat.requestPermissions(this, permissions, 100);
+                //把执行结果的操作给EasyPermissions的onRequestPermissionsResult
+            }
+        }
         ActivityCollector.addActivity(this);
         ihome= findViewById(R.id.homeimage);
         tv_title=findViewById(R.id.tv_title);
@@ -219,4 +234,5 @@ public class MainActivity extends FragmentActivity {
         boolean isDark = sp.getBoolean("dark_mode", false);
         return isDark;
     }
+
 }
