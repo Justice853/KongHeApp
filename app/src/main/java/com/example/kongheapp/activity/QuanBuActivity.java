@@ -53,7 +53,7 @@ public class QuanBuActivity extends Activity {
             }
         });
 
-        String[] quanbuApp = {"天气查询","指南针","快递查询","二维码制作","图片压缩","归属地查询"};
+        String[] quanbuApp = {"天气查询","指南针","快速翻译","二维码制作","图片压缩","归属地查询"};
         appitems = new ArrayList<HashMap<String, Object>>();
         for(int i=0;i< quanbuApp.length;++i){
             HashMap<String, Object> map = new HashMap<String, Object>();

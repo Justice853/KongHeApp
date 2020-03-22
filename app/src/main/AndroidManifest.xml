@@ -50,6 +50,11 @@
         <activity android:name=".activity.GsdActivity" />
         <activity android:name=".activity.QrcodeActivity" />
         <activity android:name=".activity.ImageYsActivity" />
+        <activity android:name=".activity.LoginActivity">
+        </activity>
+        <activity android:name=".activity.LgsuccessActivity">
+        </activity>
+        <activity android:name=".activity.RegisterActivity"></activity>
         <activity
             android:name=".activity.WeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

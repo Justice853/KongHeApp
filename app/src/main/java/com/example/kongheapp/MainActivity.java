@@ -28,6 +28,8 @@ import android.widget.Toast;
 
 import com.example.kongheapp.Controller.ActivityCollector;
 import com.example.kongheapp.Util.CheckPremissionUtil;
+import com.example.kongheapp.activity.LgsuccessActivity;
+import com.example.kongheapp.activity.LoginActivity;
 import com.example.kongheapp.activity.QuanBuActivity;
 import com.example.kongheapp.activity.SetActivity;
 import com.example.kongheapp.fragment.Fragment_home;
@@ -48,6 +50,8 @@ public class MainActivity extends FragmentActivity {
     private ListView listView,guanlistview;
     private static boolean flag=false;
     int zt=0;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -160,8 +164,17 @@ public class MainActivity extends FragmentActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                        tv_title.setText("我的账户");
+                        sharedPreferences = getSharedPreferences("login_info", MODE_PRIVATE);
+                        if(sharedPreferences.getString("login","").equals("1")){
+                            Intent intent4 = new Intent(MainActivity.this, LgsuccessActivity.class);
+                            intent4.putExtra("zt",zt);
+                            startActivity(intent4);
+                        }else {
+                            Intent intent4 = new Intent(MainActivity.this, LoginActivity.class);
+                            intent4.putExtra("zt",zt);
+                            startActivity(intent4);
+                        }
+
                         break;
                     case 1:
                         Intent intent3 = new Intent(MainActivity.this, QuanBuActivity.class);
