@@ -6,7 +6,9 @@ import android.util.Log;
 import com.example.kongheapp.db.City;
 import com.example.kongheapp.db.County;
 import com.example.kongheapp.db.Province;
+import com.example.kongheapp.gson.Trans;
 import com.example.kongheapp.gson.Weather;
+import com.example.kongheapp.gson.Word;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -82,4 +84,17 @@ public class Utillity {
         }
         return null;
     }
+
+    public static Trans handleWordResponse(String response){
+            try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("trans_result");
+                    String wordcontent = jsonArray.getJSONObject(0).toString();
+                    return new Gson().fromJson(wordcontent,Trans.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        return null;
+    }
+
 }

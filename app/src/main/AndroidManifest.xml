@@ -55,6 +55,7 @@
         <activity android:name=".activity.LgsuccessActivity">
         </activity>
         <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".activity.FanyiActivity"></activity>
         <activity
             android:name=".activity.WeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

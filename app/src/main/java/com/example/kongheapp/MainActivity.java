@@ -139,12 +139,12 @@ public class MainActivity extends FragmentActivity {
                 "退出",
         };
         int[] actionImg = new int[]{
-                R.drawable.btn_l_star,
-                R.drawable.btn_l_download,
-                R.drawable.btn_l_download,
-                R.drawable.btn_l_download,
-                R.drawable.btn_l_book,
-                R.drawable.btn_l_download,
+                R.drawable.geren,
+                R.drawable.application,
+                R.drawable.zhutiqiehuan,
+                R.drawable.shezhi,
+                R.drawable.guanyu,
+                R.drawable.exit,
         };
         actionItems = new ArrayList<HashMap<String, Object>>();
 

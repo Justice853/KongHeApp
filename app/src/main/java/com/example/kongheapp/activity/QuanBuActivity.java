@@ -77,6 +77,9 @@ public class QuanBuActivity extends Activity {
                         startActivity(intent);
                         break;
                     case 2:
+                        Intent intent6 = new Intent(QuanBuActivity.this,FanyiActivity.class);
+                        intent6.putExtra("zt",zt);
+                        startActivity(intent6);
                         break;
                     case 3:
                         Intent intent2 = new Intent(QuanBuActivity.this, QrcodeActivity.class);
