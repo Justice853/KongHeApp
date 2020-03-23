@@ -37,7 +37,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.StartPageActivity"
+            android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,6 +57,7 @@
         </activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.FanyiActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".activity.WeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

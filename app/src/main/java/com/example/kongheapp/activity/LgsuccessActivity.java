@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.kongheapp.MainActivity;
 import com.example.kongheapp.R;
 
-public class LgsuccessActivity extends Activity {
+public class LgsuccessActivity extends BaseActivity {
     TextView title;
     ImageView fanhui;
     TextView tv_account;

@@ -32,7 +32,7 @@ import java.util.HashMap;
 import static android.os.Looper.loop;
 import static android.os.Looper.prepare;
 
-public class SetActivity extends Activity {
+public class SetActivity extends BaseActivity {
     TextView title;
     ImageView fanhui;
     private ListView listView;

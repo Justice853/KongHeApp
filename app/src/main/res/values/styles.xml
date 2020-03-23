@@ -46,5 +46,10 @@
         <item name="android:windowExitAnimation">@anim/dialog_out_anim</item>
     </style>
 
+    <style name="SplashActivityTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/joinactivity</item>
+    </style>
+
 
 </resources>

@@ -17,7 +17,7 @@ import com.example.kongheapp.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends Activity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
     Button bt_get_otp = null;
     Button bt_submit_register = null;
     EditText et_telphone = null;

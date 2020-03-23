@@ -19,7 +19,7 @@ import com.example.kongheapp.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
     Button bt_login;
     EditText et_account;
     EditText et_password;

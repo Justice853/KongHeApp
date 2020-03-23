@@ -30,7 +30,7 @@ import com.example.kongheapp.Util.ImgUtil;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-public class ImageYsActivity extends Activity {
+public class ImageYsActivity extends BaseActivity {
     TextView title;
     ImageView fanhui;
     Button bt_ys;

@@ -23,7 +23,7 @@ import com.example.kongheapp.huodong.CompassActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class QuanBuActivity extends Activity {
+public class QuanBuActivity extends BaseActivity {
     TextView title;
     ImageView fanhui;
     GridView application;

@@ -140,11 +140,11 @@ public class MainActivity extends FragmentActivity {
         };
         int[] actionImg = new int[]{
                 R.drawable.geren,
-                R.drawable.application,
+                R.drawable.suoyouwenjian,
                 R.drawable.zhutiqiehuan,
                 R.drawable.shezhi,
                 R.drawable.guanyu,
-                R.drawable.exit,
+                R.drawable.tuichu,
         };
         actionItems = new ArrayList<HashMap<String, Object>>();
 

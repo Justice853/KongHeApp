@@ -35,7 +35,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class GsdActivity extends Activity implements View.OnClickListener {
+public class GsdActivity extends BaseActivity implements View.OnClickListener {
     private EditText et_phone;
     private Button btn_search;
     private TextView tv_phone;

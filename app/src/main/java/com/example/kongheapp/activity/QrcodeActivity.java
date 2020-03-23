@@ -49,7 +49,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.Inflater;
 
-public class QrcodeActivity extends Activity  {
+public class QrcodeActivity extends BaseActivity  {
     TextView title;
     ImageView fanhui;
     EditText et_ewm;

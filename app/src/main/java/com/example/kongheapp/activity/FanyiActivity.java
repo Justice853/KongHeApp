@@ -38,7 +38,7 @@ import okhttp3.Response;
 
 import static android.view.View.inflate;
 
-public class FanyiActivity extends Activity  {
+public class FanyiActivity extends BaseActivity  {
     private TextView title;
     private ImageView fanhui;
     Spinner sp_fylanguage;
