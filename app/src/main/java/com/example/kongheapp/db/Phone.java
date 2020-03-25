@@ -1,4 +1,4 @@
-package com.example.kongheapp.Data;
+package com.example.kongheapp.db;
 
 public class Phone {
     private String number;

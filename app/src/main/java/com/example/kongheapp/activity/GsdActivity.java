@@ -1,7 +1,6 @@
 package com.example.kongheapp.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,13 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kongheapp.Controller.Consts;
-import com.example.kongheapp.Data.Phone;
+import com.example.kongheapp.db.Phone;
 import com.example.kongheapp.R;
 
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;

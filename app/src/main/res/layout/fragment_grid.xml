@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorAccent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/fragment_top2"></include>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <GridView
+            android:id="@+id/grid_check"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:columnWidth="80dp"
+            android:fadeScrollbars="true"
+            android:horizontalSpacing="2dp"
+            android:numColumns="2"
+            android:padding="2dp"
+            android:descendantFocusability="blocksDescendants"
+            android:focusable="true"
+            android:verticalSpacing="2dp" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:id="@+id/floatbutton"
+        app:elevation="6dp"
+        android:clickable="true"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/float_button"
+        app:rippleColor="#0097a7"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/kh"
+        app:pressedTranslationZ="12dp"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

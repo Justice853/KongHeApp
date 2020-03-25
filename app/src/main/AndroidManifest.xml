@@ -45,6 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.TianQiActivity"></activity>
         <activity android:name=".activity.SetActivity" />
         <activity android:name=".activity.QuanBuActivity" />
         <activity android:name=".huodong.CompassActivity" />
@@ -61,7 +62,8 @@
         <activity
             android:name=".activity.WeatherActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.TianQiActivity" />
+        <activity android:name=".activity.TianJiaActivity" />
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"

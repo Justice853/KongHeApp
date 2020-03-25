@@ -1,4 +1,4 @@
-package com.example.kongheapp.QRcode;
+package com.example.kongheapp.Util;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

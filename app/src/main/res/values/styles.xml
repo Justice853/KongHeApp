@@ -50,6 +50,9 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@drawable/joinactivity</item>
     </style>
+    <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+      <item name="android:button">@drawable/checkbox_style</item>
+   </style>
 
 
 </resources>

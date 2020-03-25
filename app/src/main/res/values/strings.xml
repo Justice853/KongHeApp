@@ -5,5 +5,5 @@
     <string name="title_notifications">我的</string>
 
     <string name="info_app">欢迎使用空盒！</string>
-
+    <string name="scale_down_show">com.example.kongheapp.Controller.ScaleDownShowBehavior</string>
 </resources>

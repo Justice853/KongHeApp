@@ -1,24 +1,21 @@
 package com.example.kongheapp;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
-import android.provider.Settings;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SlidingPaneLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,12 +29,14 @@ import com.example.kongheapp.activity.LgsuccessActivity;
 import com.example.kongheapp.activity.LoginActivity;
 import com.example.kongheapp.activity.QuanBuActivity;
 import com.example.kongheapp.activity.SetActivity;
+import com.example.kongheapp.activity.WeatherActivity;
+import com.example.kongheapp.db.Zt;
 import com.example.kongheapp.fragment.Fragment_home;
+import com.example.kongheapp.fragment.Fragment_shoucang;
+import com.example.kongheapp.fragment.fragment_fenlei;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class MainActivity extends FragmentActivity {
     private SlidingPaneLayout slidinglayout;
@@ -57,19 +56,19 @@ public class MainActivity extends FragmentActivity {
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                    tv_title.setText("主页");
-                    return true;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
+                        tv_title.setText("主页");
+                        return true;
                 case R.id.navigation_dashboard:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                    tv_title.setText("所有应用");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new fragment_fenlei()).commit();
+                    tv_title.setText("分类");
                     return true;
                 case R.id.navigation_notifications:
                     getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
-                    tv_title.setText("我的");
+                    tv_title.setText("综合");
                     return true;
             }
             return false;
@@ -78,7 +77,9 @@ public class MainActivity extends FragmentActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTranslucent(this);
         final boolean isDark = readMode();
+
         if(isDark){
             //设置主题
             zt=1;
@@ -247,5 +248,21 @@ public class MainActivity extends FragmentActivity {
         boolean isDark = sp.getBoolean("dark_mode", false);
         return isDark;
     }
+    public static void setTranslucent(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // 设置状态栏透明
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+    }
+
+    public void setZt(int zt) {
+        this.zt = zt;
+    }
+
+    public int getZt() {
+        return zt;
+    }
+
+
 
 }

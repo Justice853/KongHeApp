@@ -33,6 +33,7 @@ public class TianQiActivity extends FragmentActivity {
             intent1.putExtra("zt",zt);
             startActivity(intent1);
             finish();
+
         }
     }
 }
