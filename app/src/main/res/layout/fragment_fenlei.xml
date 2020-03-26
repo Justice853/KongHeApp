@@ -39,14 +39,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-
         <ListView
 
             android:id="@+id/yingyongfenlei"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:dividerHeight="20dp"
+            android:divider="?attr/colorAccent" />
     </LinearLayout>
 
 </LinearLayout>

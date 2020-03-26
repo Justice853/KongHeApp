@@ -2,7 +2,7 @@
     <string name="app_name">空盒</string>
     <string name="title_home">主页</string>
     <string name="title_dashboard">分类</string>
-    <string name="title_notifications">我的</string>
+    <string name="title_notifications">综合</string>
 
     <string name="info_app">欢迎使用空盒！</string>
     <string name="scale_down_show">com.example.kongheapp.Controller.ScaleDownShowBehavior</string>

@@ -33,6 +33,7 @@ import com.example.kongheapp.activity.WeatherActivity;
 import com.example.kongheapp.db.Zt;
 import com.example.kongheapp.fragment.Fragment_home;
 import com.example.kongheapp.fragment.Fragment_shoucang;
+import com.example.kongheapp.fragment.Fragment_wode;
 import com.example.kongheapp.fragment.fragment_fenlei;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class MainActivity extends FragmentActivity {
                     tv_title.setText("分类");
                     return true;
                 case R.id.navigation_notifications:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_home()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.pcontent, new Fragment_wode()).commit();
                     tv_title.setText("综合");
                     return true;
             }

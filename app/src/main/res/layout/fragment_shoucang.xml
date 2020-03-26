@@ -9,7 +9,7 @@
     <GridView
         android:id="@+id/appshoucang"
         android:layout_width="wrap_content"
-        android:layout_height="371dp"
+        android:layout_height="381dp"
         android:layout_marginTop="10dp"
         android:columnWidth="80dp"
         android:fadeScrollbars="true"
@@ -22,7 +22,7 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+        android:layout_gravity="bottom|right"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/float_button"

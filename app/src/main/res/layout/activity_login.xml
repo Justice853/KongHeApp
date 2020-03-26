@@ -161,7 +161,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_third_method2"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/wechat" />
+        android:src="@drawable/wechat" />
 
     <ImageView
         android:id="@+id/iv_third_method2"
@@ -174,7 +174,7 @@
         app:layout_constraintStart_toEndOf="@+id/iv_third_method1"
         app:layout_constraintTop_toTopOf="@+id/iv_third_method3"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/qq" />
+        android:src="@drawable/qq" />
 
     <ImageView
         android:id="@+id/iv_third_method3"
@@ -187,7 +187,7 @@
         app:layout_constraintStart_toEndOf="@+id/iv_third_method2"
         app:layout_constraintTop_toBottomOf="@+id/tv_third_method"
         app:layout_constraintVertical_bias="0.207"
-        app:srcCompat="@drawable/github" />
+        android:src="@drawable/github" />
 
     <TextView
         android:id="@+id/tv_agree"
