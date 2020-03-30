@@ -103,26 +103,80 @@
                 android:textStyle="bold"
                 android:text="昵称" />
 
+
             <EditText
                 android:id="@+id/et_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:autofillHints=""
                 android:ems="10"
                 android:hint="请输入用户昵称"
                 android:inputType="textPersonName"
                 android:singleLine="true"
-                android:autofillHints="" tools:targetApi="o" />
+                tools:targetApi="o" />
 
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="性别"
+                android:textStyle="bold" />
 
+            <RadioGroup
+                android:id="@+id/sexgroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="男"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="2dp"
+                    android:drawablePadding="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="女"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="2dp"
+                    android:drawablePadding="8dp"
+                    />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="年龄"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_age"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:ems="3"
+                android:hint="请输入年龄"
+                android:inputType="number"
+                android:selectAllOnFocus="true"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/tv_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginTop="16dp"
-                android:text="密码" />
+                android:text="密码"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_password"

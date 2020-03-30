@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +16,22 @@ import android.widget.Toast;
 
 import com.example.kongheapp.MainActivity;
 import com.example.kongheapp.R;
+import com.example.kongheapp.constant.NetConstant;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     Button bt_login;
@@ -82,21 +96,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     Toast.makeText(this,"账号或密码错误",Toast.LENGTH_SHORT).show();
                     break;
                 }
-                sharedPreferences = getSharedPreferences("login_info", MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-                editor.putString("token", "token_value");
-                editor.putString("telphone", account);
-                editor.putString("login","1");
-                editor.putString("password", password);
-                if (editor.commit()) {
-                   Intent intent = new Intent(this,LgsuccessActivity.class);
-                    intent.putExtra("zt",zt);
-                   startActivity(intent);
-
-                    finish();
-                } else {
-                    showToastInThread(LoginActivity.this, "token保存失败，请重新登录");
-                }
+//                sharedPreferences = getSharedPreferences("login_info", MODE_PRIVATE);
+//                editor = sharedPreferences.edit();
+//                editor.putString("token", "token_value");
+//                editor.putString("telphone", account);
+//                editor.putString("login","1");
+//                editor.putString("password", password);
+//                if (editor.commit()) {
+//                   Intent intent = new Intent(this,LgsuccessActivity.class);
+//                    intent.putExtra("zt",zt);
+//                   startActivity(intent);
+//
+//                    finish();
+//                } else {
+//                    showToastInThread(LoginActivity.this, "token保存失败，请重新登录");
+//                }
+                asyncValidate(account,password);
 
                 break;
             case R.id.tv_to_register://注册页面
@@ -119,6 +134,87 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
 
     }
+
+    private void asyncValidate(final String account, final String password) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // okhttp异步POST请求； 总共5步
+                // 1、初始化okhttpClient对象
+                OkHttpClient okHttpClient = new OkHttpClient().newBuilder().connectTimeout(60000, TimeUnit.MILLISECONDS)
+                        .readTimeout(60000, TimeUnit.MILLISECONDS)
+                        .build();
+                final String telphone = account;
+                // 2、构建请求体requestBody
+                RequestBody requestBody = new FormBody.Builder()
+                        .add("telphone",telphone).add("password",password).build();
+                // 3、发送请求，因为要传密码，所以用POST方式
+                Request request = new Request.Builder()
+                        .url(NetConstant.getLoginURL())
+                        .post(requestBody).build();
+                // 4、使用okhttpClient对象获取请求的回调方法，enqueue()方法代表异步执行
+                okHttpClient.newCall(request).enqueue(new Callback() {
+                    @Override
+                    // 5、重写两个回调方法
+                    public void onFailure(Call call, IOException e) {
+                        Log.d("LoginActivity", "请求URL失败： " + e.getMessage());
+                        showToastInThread(LoginActivity.this, "请求URL失败, 请重试！");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseStr = response.toString();
+                        // 先判断一下服务器是否异常
+                        if(responseStr.contains("200")){
+                            /* 使用Gson解析response的JSON数据的第一步 */
+                            String responseBodyStr = response.body().string();
+                            /* 使用Gson解析response的JSON数据的第二步 */
+                            JsonObject responseBodyJSONObject = (JsonObject) new JsonParser().parse(responseBodyStr);
+                            // 如果返回的status为success，则getStatus返回true，登录验证通过
+                            if(getStatus(responseBodyJSONObject).equals("success")){
+                                sharedPreferences = getSharedPreferences("login_info", MODE_PRIVATE);
+                                editor = sharedPreferences.edit();
+                                editor.putString("token", "token_value");
+                                editor.putString("telphone", telphone);
+                                editor.putString("password", password);
+                                editor.putString("login","1");
+                                if(editor.commit()){
+                                    Intent intent = new Intent(LoginActivity.this,LgsuccessActivity.class);
+                                    intent.putExtra("zt",zt);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else {
+                                    showToastInThread(LoginActivity.this, "token保存失败，请重新登录");
+                                }
+                            }else {
+                                getResponseErrMsg(LoginActivity.this, responseBodyJSONObject);
+                                Log.d("LoginActivity", "账号或密码验证失败");
+                            }
+                        }else{
+                            Log.d("LoginActivity", "服务器异常");
+                            showToastInThread(LoginActivity.this, responseStr);
+                        }
+
+                    }
+                });
+            }
+        }).start();
+    }
+
+    /*
+     使用Gson解析response返回异常信息的JSON中的data对象
+     这也属于第三步，一、二步在方法调用之前执行了
+    */
+    private void getResponseErrMsg(Context context, JsonObject responseBodyJSONObject) {
+        JsonObject dataObject = responseBodyJSONObject.get("data").getAsJsonObject();
+        String errorCode = dataObject.get("errCode").getAsString();
+        String errorMsg = dataObject.get("errMsg").getAsString();
+        Log.d("LoginActivity", "errorCode: " + errorCode + " errorMsg: " + errorMsg);
+        // 在子线程中显示Toast
+        showToastInThread(context, errorMsg);
+    }
+
     private void setOnFocusChangeErrMsg(final EditText et, final String type, final String errmsg) {
         et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -144,6 +240,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         });
     }
 
+    private String getStatus(JsonObject responseBodyJSONObject) {
+        /* 使用Gson解析response的JSON数据的第三步
+           通过JSON对象获取对应的属性值 */
+        String status = responseBodyJSONObject.get("status").getAsString();
+        // 登录成功返回的json为{ "status":"success", "data":null }
+        // 只获取status即可，data为null
+        return status;
+    }
     private boolean isPasswordValid(String inputStr) {
         return inputStr !=null && inputStr.trim().length()>5;
     }
