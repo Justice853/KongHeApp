@@ -130,7 +130,7 @@ public class GsdActivity extends BaseActivity implements View.OnClickListener {
     class GsdHandler extends Handler{
         public void handleMessage(Message msg){
             Phone phone = (Phone)msg.obj;
-            showInfo(phone);
+            showInfo(phone);//将phone对象的数据赋给textview对象
         }
     }
     private String getJsonFromURL(String urlStr){

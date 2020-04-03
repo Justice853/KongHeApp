@@ -188,9 +188,7 @@ public class WeatherActivity extends AppCompatActivity {
         loadBingPic();
     }
    private void showWeatherInfo(Weather weather){
-
         String cityName = weather.basic.cityName;
-//        String updateName = weather.basic.update.updateTime.split("")[1];
        String updateName = weather.update.updateTime;
         String degree = weather.now.temperature+"℃";
         String weatherInfo = weather.now.info;
@@ -216,8 +214,6 @@ public class WeatherActivity extends AppCompatActivity {
             aqiText.setText(weather.now.wind_sc);
             pm25Text.setText(weather.now.hum);
         }
-
-
        for(int i=0;i<weather.lifestyleList.size()-1;i++)
        {
            View view = LayoutInflater.from(this).inflate(R.layout.suggest_item,suggestionLayout,false);
@@ -227,12 +223,6 @@ public class WeatherActivity extends AppCompatActivity {
            info.setText(infotext);
            suggestionLayout.addView(view);
        }
-//        String comfort = "舒适度:"+weather.lifestyle.comfort.info;
-//        String carWash = "洗车指数:"+weather.lifestyle.carWash.info;
-//        String sport = "运动指数:"+weather.lifestyle.sport.info;
-//        comfortText.setText(comfort);
-//        carWashText.setText(carWash);
-//        sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
         Intent intent = new Intent(this, AutoUpDateTianQiService.class);
         startService(intent);

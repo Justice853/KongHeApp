@@ -71,7 +71,7 @@ public class QrcodeActivity extends BaseActivity  {
                 finish();
             }
         });
-
+        title.setText("二维码制作");
         et_ewm=findViewById(R.id.input_ewm);
         bt_ewm=findViewById(R.id.bt_ewm);
         bt_img=findViewById(R.id.bt_image);
@@ -211,7 +211,8 @@ public class QrcodeActivity extends BaseActivity  {
                 if(resultCode==RESULT_OK){
                     try {
                         Bitmap logo = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        bitmap = QRcodeUtil.createQRCodeBitmap(et_ewm.getText().toString(),480,480,"UTF-8","H","2", Color.BLACK,Color.WHITE,logo);
+                        bitmap = QRcodeUtil.createQRCodeBitmap(et_ewm.getText().toString(),480,480,"UTF-8"
+                                ,"H","2", Color.BLACK,Color.WHITE,logo);
                         code_image.setImageBitmap(bitmap);
 
                     } catch (FileNotFoundException e) {
@@ -272,7 +273,7 @@ public class QrcodeActivity extends BaseActivity  {
     private void handleImageBeforeKitKat(Intent data) {
         Uri uri = data.getData();
         String imagePath =getImagePath(uri,null);
-        displayImage(imagePath);
+        displayImage(imagePath);//生成二维码。
     }
 
 
