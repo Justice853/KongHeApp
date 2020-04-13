@@ -31,6 +31,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 
 public class GsdActivity extends BaseActivity implements View.OnClickListener {
@@ -93,7 +94,8 @@ public class GsdActivity extends BaseActivity implements View.OnClickListener {
                     Toast.makeText(this,"输入框不能为空",Toast.LENGTH_SHORT).show();
                 }else {
                     hideKeyboard(et_phone);
-                    url = Consts.BAIDU_PHONE_URL + phoneNumber;
+//                    url = Consts.BAIDU_PHONE_URL + phoneNumber;
+                    url = Consts.TAOBAO_PHONE_URL + phoneNumber;
                     new GsdThread(url,phoneNumber).start();
         }
                 break;
@@ -111,6 +113,9 @@ public class GsdActivity extends BaseActivity implements View.OnClickListener {
         }
         public void run(){
             String result =getJsonFromURL(url);
+            System.out.println(result);
+            result=result.replace("__GetZoneResult_ = ","");
+            System.out.println("我好了"+result+"我好了");
             if(TextUtils.isEmpty(result)){
                 Looper.prepare();
                 Toast.makeText(GsdActivity.this,"返回数据为空",Toast.LENGTH_SHORT).show();
@@ -137,7 +142,7 @@ public class GsdActivity extends BaseActivity implements View.OnClickListener {
         StringBuilder sb = new StringBuilder();
         try {
             InputStream is = new URL(urlStr).openStream();
-            InputStreamReader isr = new InputStreamReader(is);
+            InputStreamReader isr = new InputStreamReader(is,"GBK");
             BufferedReader br = new BufferedReader(isr);
             String line;
             while ((line = br.readLine())!=null){
@@ -152,13 +157,18 @@ public class GsdActivity extends BaseActivity implements View.OnClickListener {
     private Phone parseJsonToPhone(String url,String number){
         Phone phone = new Phone();
         try {
+
             JSONObject object =new JSONObject(url);
-            JSONObject numberObj = object.getJSONObject("response").getJSONObject(number);
-            JSONObject detailObj =numberObj.getJSONObject("detail");
+//            JSONObject numberObj = object.getJSONObject("response").getJSONObject(number);
+//            JSONObject detailObj =numberObj.getJSONObject("detail");
             phone.setNumber(number);
-            phone.setProvince(detailObj.getString("province"));
-            phone.setCarrier(detailObj.getString("operator"));
-            phone.setcatName(numberObj.getString("location"));
+//            phone.setProvince(detailObj.getString("province"));
+//            phone.setCarrier(detailObj.getString("operator"));
+//            phone.setcatName(numberObj.getString("location"));
+            phone.setProvince(object.getString("province"));
+            phone.setCarrier(object.getString("carrier"));
+            phone.setcatName(object.getString("catName"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
